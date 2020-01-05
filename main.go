@@ -1,16 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net"
 
-import "net"
-
-import "github.com/messi612/golearn/common"
-
-import "net/http"
-
-import "log"
-
-import "html"
+	"github.com/messi612/golearn/common"
+)
 
 func main() {
 	MyPrint("5")
@@ -24,11 +19,6 @@ func main() {
 	addr, err := net.ResolveIPAddr("ip4", "www.baidu.com")
 	common.CheckError(err)
 	fmt.Println(addr)
-
-	http.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
-	})
-	log.Fatal(http.ListenAndServe(":8080", nil))
 
 }
 
