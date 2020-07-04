@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	ListDir      = 0x0001
+	ListDir      = 0x0001 //是否允许展示目录
 	UPLOAD_DIR   = "./static/uploads"
 	TEMPLATE_DIR = "./static/views"
 )
@@ -132,7 +132,7 @@ func staticDirHandler(mux *http.ServeMux, prefix string, staticDir string, flags
 
 func main() {
 	mux := http.NewServeMux()
-	staticDirHandler(mux, "/assets/", "./static/public", 0)
+	staticDirHandler(mux, "/assets/", "./static/public", 1)
 	mux.HandleFunc("/", safeHandler(listHandler))
 	mux.HandleFunc("/view", safeHandler(viewHandler))
 	mux.HandleFunc("/upload", safeHandler(uploadHandler))
